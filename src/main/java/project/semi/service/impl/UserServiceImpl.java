@@ -29,13 +29,13 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public UserResponse login(UserRequest userRequest) {
-        UserResponse user = findByEmail(userRequest.getEmail());
+        User user = findByEmail(userRequest.getEmail());
         String encodePassword = user.getPassword();
         if( !passwordEncoder.matches(userRequest.getPassword(), encodePassword)){
             return null;
         }
         user.clearPassword();
-        return user;
+        return new UserResponse(user);
     }
 
     /**
@@ -44,11 +44,11 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public UserResponse findByEmail(String email) {
+    public User findByEmail(String email) {
         User entity = userRepository.findByEmail(email).orElseThrow( () ->
             new IllegalArgumentException("사용자 없음 ")
         );
-        return new UserResponse(entity);
+        return entity;
     }
 
 

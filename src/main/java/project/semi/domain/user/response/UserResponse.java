@@ -22,7 +22,4 @@ public class UserResponse {
         this.password = entity.getPassword();
     }
 
-    public void clearPassword() {
-        this.password = "";
-    }
 }

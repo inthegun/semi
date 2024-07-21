@@ -1,5 +1,6 @@
 package project.semi.service;
 
+import project.semi.domain.user.User;
 import project.semi.domain.user.request.UserRequest;
 import project.semi.domain.user.response.UserResponse;
 
@@ -9,5 +10,5 @@ public interface UserService {
 
     UserResponse login(UserRequest userRequest);
 
-    UserResponse findByEmail(String email);
+    User findByEmail(String email);
 }

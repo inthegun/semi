@@ -29,4 +29,8 @@ public class User {
         this.gender = gender;
         this.birthday = birthday;
     }
+
+    public void clearPassword() {
+        this.password = "";
+    }
 }
